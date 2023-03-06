@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm Clock</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn4.iconfinder.com/data/icons/adore/118/Clock.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    .clock {
+      font-size: 6rem;
+      color: #e60000;
+      text-align: center;
+      text-shadow: 0 0 20px #e60000;
+      background-image: radial-gradient(#e60000 20%, transparent 50%);
+      background-size: 300% 300%;
+      animation: pulse 1s infinite;
+      border-radius: 50%;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 20px #e60000;
+    }
+    
+    #hours, #minutes, #seconds {
+      display: inline-block;
+      padding: 0.5rem;
+      background-color: #1a1a1a;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px #e60000;
+    }
+    
+    #hours {
+      color: #ff6600;
+    }
+    
+    #minutes {
+      color: #ffff00;
+    }
+    
+    #seconds {
+      color: #00cc00;
+    }
+    
+    @keyframes pulse {
+      0% {
+        background-position: 0 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <span id="hours">00</span>:
+    <span id="minutes">00</span>:
+    <span id="seconds">00</span>
+  </div>
+  
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
